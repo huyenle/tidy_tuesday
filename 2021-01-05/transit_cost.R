@@ -52,8 +52,8 @@ p1 <- SEA.data %>%
   # geom_bar(aes(y = length, fill = "Proposed"), stat = "identity", width = .1) +
   coord_flip() +
   # scale_fill_manual(values = c(Proposed = "grey", Complete = "blue")) +
-  geom_text(aes(y = tunnel, label = scales::percent(tunnel/length)), vjust = 2, size = 3) +
-  annotate("text", x = first(SEA.data$country), y = first(SEA.data$tunnel) , label = "completed" , vjust = 1.8, hjust = 1.4, size = 3, parse = T) +
+  geom_text(aes(y = tunnel, label = scales::percent(tunnel/length)), vjust = 2) +
+  annotate("text", x = first(SEA.data$country), y = first(SEA.data$tunnel) , label = "completed" , vjust = 1.8, hjust = -.35, parse = T) +
   labs(y = "km", x = element_blank()) 
   # scale_color_manual(values = c(Proposed = "grey", Complete = "blue"))
 
@@ -80,6 +80,7 @@ p3 <-
   theme(axis.title.y =element_blank(),
       axis.text.y =element_blank(),
       axis.ticks.y = element_blank()) +
+  scale_y_continuous(limits = c(0, 70)) +
   labs(y = "USD bil.")
 
 plot_grid(p1, p2, p3, nrow = 1, align = "v", labels = c("Length", "Cost per km", "Total cost"),
