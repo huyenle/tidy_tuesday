@@ -51,14 +51,6 @@ holidays$cleaned_ind_from <-
          "Empire of Japan"  = "Japan",
          "Russian Soviet Federative Socialist Republic" = "Soviet Union")
 
-# Group year
-# holidays$century <- 
-#   cut(holidays$year, breaks = seq(1100 - 1, 2100 -1, 100), labels = seq(12, 21, 1))
-# holidays$century <- recode(holidays$century, 
-#                            "16" = "Centuries 16-18", "17" = "Centuries 16-18", "18" = "Centuries 16-18",
-#                            "19" ="Century 19",
-#                            "21" = "Century 21")
-# # Add the two world wars
 significant_years <- c(1960, 1991, 1990, 1821, 1975)
 holidays$ww <- ifelse(holidays$year < 1945 | holidays$year > 1999, NA,
                       # ifelse(holidays$year < 1945, "Before 1945",
@@ -67,10 +59,6 @@ holidays$ww <- ifelse(holidays$year < 1945 | holidays$year > 1999, NA,
                                            NA))) %>%
   recode("1990" = "1990-1991", "1991" = "1990-1991")
 
-# holidays$labels <- ifelse(is.na(holidays$ww), as.character(holidays$century), holidays$ww)
-# 
-# holidays %>%
-#   filter(!is.na(ww)) 
 
 # 
 plot_data <- holidays %>%
@@ -80,7 +68,6 @@ plot_data <- holidays %>%
   summarise(n = n()) %>%
   filter(short_ind_from != "") %>%
   ungroup() %>%
-  # arrange(-n) %>%
   mutate(short_ind_from = factor(short_ind_from,
                                  levels = c(setdiff(unique(short_ind_from), "Others"), "Others"), ordered =T))
 
