@@ -80,7 +80,7 @@ plot_ <- ggplot(plot_data, aes(fill = short_ind_from, values = n)) +
                      expand = c(0,0)) +
   coord_equal() +
   labs(title = "Significant periods in the 20th century for the indepedence of many countries",
-       x = "Year", y = "#Countries")+ 
+       x = "Year", y = "#Countries", fill = "Indenpendence from")+ 
   ggthemes::scale_fill_tableau() +
   theme_minimal(base_family = 'xkcd') +
   theme(panel.grid = element_blank(), axis.ticks.y = element_blank()) 
